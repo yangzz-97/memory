@@ -63,4 +63,9 @@ echo  2 > /proc/sys/vm/drop_caches代表清除回收slab分配器中的对象
 
 echo  3 > /proc/sys/vm/drop_caches代表清除pagecache和slab分配器中的缓存对象
 
+因buffer/cache占用太高导致系统崩溃的解决办法一般就是手动触发缓存的清除操作。
+
+
+手动触发缓存回收的操作，只是在这一次回收有用，过一段时间又需要回收，可以通过内核中提供的vm.vfs_cache_pressure参数来控制回收的频率，值设置范围0-200，默认值是100，值越大回收频率越高。
+
 
